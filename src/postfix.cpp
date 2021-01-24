@@ -9,9 +9,8 @@ int check_symbol(char symbol) {
     else if (symbol == '*' || symbol == '/') return 2;
     else if (symbol >= '0' && symbol <= '9') return 3;
     else if (symbol == ')') return 4;
-    else {
+    else
         return -1;
-    }
 }
 
 
@@ -26,8 +25,7 @@ std::string infix2postfix(std::string infix) {
         else if (check_symbol(el) == 3) {
             result += el;
             result += ' ';
-        }
-        else if (el == '(') stack.push(el);
+        } else if (el == '(') stack.push(el);
         else if (check_symbol(el) == 1) {
             if (check_symbol(stack.get()) <= 1 || stack.isEmpty()) stack.push(el);
             else if (check_symbol(stack.get()) == 2) {
@@ -47,8 +45,7 @@ std::string infix2postfix(std::string infix) {
                 result += stack.pop();
                 result += ' ';
             }
-        }
-        else if (check_symbol(el) == 2) {
+        } else if (check_symbol(el) == 2) {
             if (check_symbol(stack.get()) == 2) {
                 result += stack.pop();
                 result += ' ';
@@ -66,8 +63,7 @@ std::string infix2postfix(std::string infix) {
     for (int i = 0; i < result.size(); i++) {
         if (result[i] == ' ' && result[i + 1] == '.') {
             continue;
-        }
-        else {
+        } else {
             postfix += result[i];
         }
     }
