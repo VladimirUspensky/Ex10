@@ -21,21 +21,19 @@ std::string infix2postfix(std::string infix) {
         if (el == '.') {
             result += el;
             continue;
-        }
-        else if (check_symbol(el) == 3) {
+        } else if (check_symbol(el) == 3) {
             result += el;
             result += ' ';
         } else if (el == '(') stack.push(el);
         else if (check_symbol(el) == 1) {
-            if (check_symbol(stack.get()) <= 1 || stack.isEmpty()) stack.push(el);
+            if (check_symbol(stack.get()) <= 1 || stack.isEmpty())
+                stack.push(el);
             else if (check_symbol(stack.get()) == 2) {
                 result += stack.pop();
                 result += ' ';
                 stack.push(el);
             }
-        }
-
-        else if (check_symbol(el) == 4) {
+        } else if (check_symbol(el) == 4) {
             while (!(stack.isEmpty())) {
                 if (stack.get() == '(') {
                     stack.pop();
