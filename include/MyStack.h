@@ -4,11 +4,12 @@
 
 template<class T>
 class MyStack {
-private:
+ private:
     int current_size{};
     int max_size{};
     T* stack;
-public:
+
+ public:
     MyStack(const MyStack& stack) {
         this->current_size = stack.current_size;
         this->stack = stack.stack;
@@ -36,7 +37,7 @@ public:
 
     T pop() {
         if (!isEmpty()) {
-            this->current_size --;
+            this->current_size--;
             return this->stack[this->current_size];
         }
         return -1;

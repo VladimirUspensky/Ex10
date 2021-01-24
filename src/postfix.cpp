@@ -9,7 +9,9 @@ int check_symbol(char symbol) {
     else if (symbol == '*' || symbol == '/') return 2;
     else if (symbol >= '0' && symbol <= '9') return 3;
     else if (symbol == ')') return 4;
-    else return -1;
+    else {
+        return -1;
+    }
 }
 
 
@@ -51,21 +53,25 @@ std::string infix2postfix(std::string infix) {
                 result += stack.pop();
                 result += ' ';
                 stack.push(el);
-            } else stack.push(el);
+            } else {
+                stack.push(el);
+            }
         }
     }
     while (!(stack.isEmpty())) {
         result += stack.pop();
         result += ' ';
     }
-    std::string postfix = "";
+    std::string postfix;
     for (int i = 0; i < result.size(); i++) {
         if (result[i] == ' ' && result[i + 1] == '.') {
             continue;
         }
-        else postfix += result[i];
+        else {
+            postfix += result[i];
+        }
     }
+    if (postfix[postfix.size() - 1] == ' ') postfix.pop_back();
 
     return postfix;
 }
-
