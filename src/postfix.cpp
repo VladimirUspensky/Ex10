@@ -26,8 +26,7 @@ std::string infix2postfix(std::string infix) {
             result += ' ';
         } else if (el == '(') {
             stack.push(el);
-        }
-        else if (check_symbol(el) == 1) {
+        } else if (check_symbol(el) == 1) {
             if (check_symbol(stack.get()) <= 1 || stack.isEmpty()) {
                 stack.push(el);
             } else if (check_symbol(stack.get()) == 2) {
