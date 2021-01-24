@@ -24,11 +24,13 @@ std::string infix2postfix(std::string infix) {
         } else if (check_symbol(el) == 3) {
             result += el;
             result += ' ';
-        } else if (el == '(') stack.push(el);
+        } else if (el == '(') {
+            stack.push(el);
+        }
         else if (check_symbol(el) == 1) {
-            if (check_symbol(stack.get()) <= 1 || stack.isEmpty())
+            if (check_symbol(stack.get()) <= 1 || stack.isEmpty()) {
                 stack.push(el);
-            else if (check_symbol(stack.get()) == 2) {
+            } else if (check_symbol(stack.get()) == 2) {
                 result += stack.pop();
                 result += ' ';
                 stack.push(el);
